@@ -110,6 +110,8 @@ class Question(models.Model):
     # question grade/mark
     grade = models.FloatField(default=0.0)
 
+    Content = models.CharField(max_length=35,null=True)
+
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
         all_answers = self.choice_set.filter(is_correct=True).count()
@@ -118,6 +120,10 @@ class Question(models.Model):
             return True
         else:
             return False
+
+    # Other fields and methods you would like to design
+    def __str__(self):
+        return "Question: " + self.Content
 
 
 #  <HINT> Create a Choice Model with:
